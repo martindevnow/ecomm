@@ -3,13 +3,13 @@ import HomePage from './views/homepage/homepage.component';
 import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
+import Shop from './views/shop/shop.component';
 
 function App() {
   return (
     <Switch>
+      <Route path='/shop' exact component={Shop} />
       <Route path='/' component={HomePage} />
-      <Route path='/topics' exact component={HomePage} />
-      <Route path='/topics/:topicId' component={HomePage} />
     </Switch>
   );
 }
