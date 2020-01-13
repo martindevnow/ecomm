@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import SignIn from '../../components/sign-in/sign-in.component';
 import SignUp from '../../components/sign-up/sign-up.component';
 
@@ -14,6 +14,6 @@ const AuthPage = props => {
   );
 };
 
-AuthPage.propTypes = {};
+// AuthPage.propTypes = {};
 
 export default AuthPage;

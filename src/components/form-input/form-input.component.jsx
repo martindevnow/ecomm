@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './form-input.style.scss';
 const FormInput = ({ handleChange, label, ...otherProps }) => {
-  console.log('otherprops', otherProps);
   return (
     <div className="group">
       <input onChange={handleChange} {...otherProps} className="form-input" />
@@ -19,6 +18,9 @@ const FormInput = ({ handleChange, label, ...otherProps }) => {
   );
 };
 
-FormInput.propTypes = {};
+FormInput.propTypes = {
+  handleChange: PropTypes.func,
+  label: PropTypes.string
+};
 
 export default FormInput;

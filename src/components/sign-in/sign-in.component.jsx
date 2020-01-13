@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import './sign-in.style.scss';
 import FormInput from '../form-input/form-input.component';
@@ -28,6 +28,8 @@ const SignIn = props => {
         break;
       case 'password':
         setPassword(value);
+        break;
+      default:
         break;
     }
   };
@@ -62,6 +64,6 @@ const SignIn = props => {
   );
 };
 
-SignIn.propTypes = {};
+// SignIn.propTypes = {};
 
 export default SignIn;

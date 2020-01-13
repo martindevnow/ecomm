@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import './sign-up.style.scss';
 import FormInput from '../form-input/form-input.component';
@@ -75,6 +75,6 @@ const SignUp = props => {
   );
 };
 
-SignUp.propTypes = {};
+// SignUp.propTypes = {};
 
 export default SignUp;
