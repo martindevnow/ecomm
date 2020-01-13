@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import HomePage from './views/homepage/homepage.component';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './App.css';
@@ -11,7 +11,7 @@ import { setCurrentUser } from './redux/user/user.actions';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
-const App = ({ setCurrentUser }) => {
+const App = ({ currentUser, setCurrentUser }) => {
   useEffect(() => {
     return auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -36,7 +36,11 @@ const App = ({ setCurrentUser }) => {
       <Header />
       <Switch>
         <Route path="/shop" exact component={Shop} />
-        <Route path="/auth" component={AuthPage} />
+        <Route
+          exact
+          path="/auth"
+          render={() => (currentUser ? <Redirect to="/" /> : <AuthPage />)}
+        />
         <Route path="/" component={HomePage} />
       </Switch>
     </div>
@@ -47,4 +51,7 @@ const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
+});
+export default connect(mapStateToProps, mapDispatchToProps)(App);
