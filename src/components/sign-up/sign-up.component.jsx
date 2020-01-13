@@ -24,6 +24,10 @@ const SignUp = props => {
         password
       );
       await createUserProfileDocument(user, { displayName });
+      setDisplayName('');
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
     } catch (error) {
       console.error(error);
     }
