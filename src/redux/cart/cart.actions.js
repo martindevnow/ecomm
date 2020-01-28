@@ -1,6 +1,7 @@
-const namespace = 'CART';
-export const TOGGLE_CART_DROPDOWN = `${namespace}::TOGGLE_CART_DROPDOWN`;
-export const HIDE_CART_DROPDOWN = `${namespace}::HIDE_CART_DROPDOWN`;
+const namespace = '[CART] ::';
+export const TOGGLE_CART_DROPDOWN = `${namespace}TOGGLE_CART_DROPDOWN`;
+export const HIDE_CART_DROPDOWN = `${namespace}HIDE_CART_DROPDOWN`;
+export const SHOW_CART_DROPDOWN = `${namespace}SHOW_CART_DROPDOWN`;
 
 export const toggleCartDropdown = () => ({
   type: TOGGLE_CART_DROPDOWN
@@ -8,4 +9,8 @@ export const toggleCartDropdown = () => ({
 
 export const hideCartDropdown = () => ({
   type: HIDE_CART_DROPDOWN
+});
+
+export const showCartDropdown = () => ({
+  type: SHOW_CART_DROPDOWN
 });
