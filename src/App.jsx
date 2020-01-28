@@ -10,6 +10,8 @@ import AuthPage from './views/authpage/authpage.component';
 import { setCurrentUser } from './redux/user/user.actions';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import { selectCurrentUser } from './redux/user/user.selector';
+import CheckoutPage from './views/checkout/checkout.component';
 
 const App = ({ currentUser, setCurrentUser }) => {
   useEffect(() => {
@@ -17,13 +19,10 @@ const App = ({ currentUser, setCurrentUser }) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot(snapshot => {
-          setCurrentUser(
-            {
-              id: snapshot.id,
-              ...snapshot.data()
-            },
-            () => console.log('i was called')
-          );
+          setCurrentUser({
+            id: snapshot.id,
+            ...snapshot.data()
+          });
         });
       } else {
         setCurrentUser(userAuth);
@@ -35,14 +34,15 @@ const App = ({ currentUser, setCurrentUser }) => {
     <div>
       <Header />
       <Switch>
-        <Route path="/shop" exact component={Shop} />{' '}
+        <Route path="/shop" component={Shop} />
         <Route
           exact
           path="/auth"
           render={() => (currentUser ? <Redirect to="/" /> : <AuthPage />)}
-        />{' '}
-        <Route path="/" component={HomePage} />{' '}
-      </Switch>{' '}
+        />
+        <Route exact path="/checkout" component={CheckoutPage} />
+        <Route path="/" component={HomePage} />
+      </Switch>
     </div>
   );
 };
@@ -51,7 +51,7 @@ const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = state => ({
+  currentUser: selectCurrentUser(state)
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);
