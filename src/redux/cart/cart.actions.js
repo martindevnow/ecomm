@@ -1,4 +1,4 @@
-const namespace = '[CART] ::';
+const namespace = '[CART] :: ';
 export const TOGGLE_CART_DROPDOWN = `${namespace}TOGGLE_CART_DROPDOWN`;
 export const HIDE_CART_DROPDOWN = `${namespace}HIDE_CART_DROPDOWN`;
 export const SHOW_CART_DROPDOWN = `${namespace}SHOW_CART_DROPDOWN`;
