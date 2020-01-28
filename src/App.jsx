@@ -35,14 +35,14 @@ const App = ({ currentUser, setCurrentUser }) => {
     <div>
       <Header />
       <Switch>
-        <Route path="/shop" exact component={Shop} />
+        <Route path="/shop" exact component={Shop} />{' '}
         <Route
           exact
           path="/auth"
           render={() => (currentUser ? <Redirect to="/" /> : <AuthPage />)}
-        />
-        <Route path="/" component={HomePage} />
-      </Switch>
+        />{' '}
+        <Route path="/" component={HomePage} />{' '}
+      </Switch>{' '}
     </div>
   );
 };
