@@ -1,6 +1,8 @@
 import * as CartActions from './cart.actions';
 import {
-  addItemToCart
+  addItemToCart,
+  removeItemFromCart,
+  clearItemFromCart
 } from './cart.utils';
 
 const initialState = {
@@ -35,6 +37,18 @@ export default (state = initialState, {
       return {
         ...state,
         cartItems: addItemToCart(state.cartItems, payload),
+      };
+
+    case CartActions.REMOVE_ITEM:
+      return {
+        ...state,
+        cartItems: removeItemFromCart(state.cartItems, payload),
+      };
+
+    case CartActions.CLEAR_ITEM_FROM_CART:
+      return {
+        ...state,
+        cartItems: clearItemFromCart(state.cartItems, payload),
       }
       default:
         return state;
